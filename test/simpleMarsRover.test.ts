@@ -1,3 +1,5 @@
+import { MarsRover } from "../src/marsRover";
+
 describe("Simple Mars Rover", () => {
   test("Facing 'West' after turn 'Left' command", () => {
     const rover = new MarsRover();
