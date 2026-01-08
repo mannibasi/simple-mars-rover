@@ -9,4 +9,8 @@ describe("Simple Mars Rover", () => {
     const rover = new MarsRover();
     expect(rover.command("R")).toBe("0:0:E");
   });
+  test("Facing 'North' after 'Move' command", () => {
+    const rover = new MarsRover();
+    expect(rover.command("M")).toBe("0:1:N");
+  });
 });
