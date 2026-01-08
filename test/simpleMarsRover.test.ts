@@ -5,4 +5,8 @@ describe("Simple Mars Rover", () => {
     const rover = new MarsRover();
     expect(rover.command("L")).toBe("0:0:W");
   });
+  test("Facing 'East' after turn 'Right' command", () => {
+    const rover = new MarsRover();
+    expect(rover.command("R")).toBe("0:0:E");
+  });
 });
