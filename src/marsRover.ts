@@ -1,11 +1,21 @@
+import { Orientation } from "./orientation";
+import { Position } from "./position";
+
 export class MarsRover {
+  private position: Position;
+  constructor() {
+    this.position = { x: 0, y: 0, orientation: Orientation.North };
+  }
   command(input: string) {
     if (input === "M") {
-      return "0:1:N";
+      this.position.y++;
     }
     if (input === "R") {
-      return "0:0:E";
+      this.position.orientation = Orientation.East;
     }
-    return "0:0:W";
+    if (input === "L") {
+      this.position.orientation = Orientation.West;
+    }
+    return `${this.position.x}:${this.position.y}:${this.position.orientation}`;
   }
 }
