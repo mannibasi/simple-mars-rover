@@ -12,7 +12,8 @@ describe("Simple Mars Rover", () => {
     { command: "RRRR", expected: "0:0:N" },
     { command: "M", expected: "0:1:N" },
     { command: "RM", expected: "1:0:E" },
-    { command: "MM", expected: "0:2:N" }
+    { command: "MM", expected: "0:2:N" },
+    { command: "MMMMMMMMMM", expected: "0:0:N" }
   ])(
     "Command '$command' results in position '$expected'",
     ({ command, expected }) => {
