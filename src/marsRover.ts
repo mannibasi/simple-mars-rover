@@ -8,14 +8,17 @@ export class MarsRover {
     this.position = { x: 0, y: 0, orientation: Orientation.North };
   }
   command(input: string) {
-    if (input === "M") {
-      this.position.y++;
-    }
-    if (input === "R") {
-      this.position.orientation = Orientation.East;
-    }
-    if (input === "L") {
-      this.position.orientation = Orientation.West;
+    const commands: string[] = input.split("");
+    for (const command of commands) {
+      if (command === "M") {
+        this.position.y++;
+      }
+      if (command === "R") {
+        this.position.orientation = Orientation.East;
+      }
+      if (command === "L") {
+        this.position.orientation = Orientation.West;
+      }
     }
     return formattedPosition(this.position);
   }
