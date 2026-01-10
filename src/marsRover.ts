@@ -1,5 +1,6 @@
 import { Orientation } from "./orientation";
 import { Position } from "./position";
+import { formattedPosition } from "./printer";
 
 export class MarsRover {
   private position: Position;
@@ -16,6 +17,6 @@ export class MarsRover {
     if (input === "L") {
       this.position.orientation = Orientation.West;
     }
-    return `${this.position.x}:${this.position.y}:${this.position.orientation}`;
+    return formattedPosition(this.position);
   }
 }
