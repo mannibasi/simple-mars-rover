@@ -27,6 +27,12 @@ export class Position {
       } else {
         this.x = this.x - 1;
       }
+    } else if (this.orientation === Orientation.South) {
+      if (this.y === 0) {
+        this.y = EDGE_OF_BOARD;
+      } else {
+        this.y = this.y - 1;
+      }
     }
   }
 
