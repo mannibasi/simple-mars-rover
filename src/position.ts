@@ -7,23 +7,34 @@ import {
 
 export class Position {
   constructor(
-    public x: number,
-    public y: number,
-    public orientation: Orientation
+    private readonly x: number,
+    private readonly y: number,
+    private readonly orientation: Orientation
   ) {}
 
-  moveForward(): void {
-    const GRID_SIZE = 9;
+  moveForward(gridSize: number): Position {
     const { dx, dy } = MovementDelta[this.orientation];
+    const limit = gridSize + 1;
 
-    this.x = (this.x + dx + (GRID_SIZE + 1)) % (GRID_SIZE + 1);
-    this.y = (this.y + dy + (GRID_SIZE + 1)) % (GRID_SIZE + 1);
+    const nextX = (this.x + dx + limit) % limit;
+    const nextY = (this.y + dy + limit) % limit;
+
+    return new Position(nextX, nextY, this.orientation);
   }
 
-  turnLeft() {
-    this.orientation = AntiClockwiseOrientation[this.orientation];
+  turnLeft(): Position {
+    return new Position(
+      this.x,
+      this.y,
+      AntiClockwiseOrientation[this.orientation]
+    );
   }
-  turnRight() {
-    this.orientation = ClockwiseOrientation[this.orientation];
+
+  turnRight(): Position {
+    return new Position(this.x, this.y, ClockwiseOrientation[this.orientation]);
+  }
+
+  toString() {
+    return `${this.x}:${this.y}:${this.orientation}`;
   }
 }
