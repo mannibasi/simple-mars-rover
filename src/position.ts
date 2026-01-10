@@ -1,4 +1,9 @@
-import { Orientation, ClockwiseOrientation, AntiClockwiseOrientation } from "./orientation";
+import {
+  Orientation,
+  ClockwiseOrientation,
+  AntiClockwiseOrientation,
+  MovementDelta
+} from "./orientation";
 
 export class Position {
   constructor(
@@ -8,32 +13,11 @@ export class Position {
   ) {}
 
   moveForward(): void {
-    const EDGE_OF_BOARD = 9;
-    if (this.orientation === Orientation.North) {
-      if (this.y === EDGE_OF_BOARD) {
-        this.y = 0;
-      } else {
-        this.y = this.y + 1;
-      }
-    } else if (this.orientation === Orientation.East) {
-      if (this.x === EDGE_OF_BOARD) {
-        this.x = 0;
-      } else {
-        this.x = this.x + 1;
-      }
-    } else if (this.orientation === Orientation.West) {
-      if (this.x === 0) {
-        this.x = EDGE_OF_BOARD;
-      } else {
-        this.x = this.x - 1;
-      }
-    } else if (this.orientation === Orientation.South) {
-      if (this.y === 0) {
-        this.y = EDGE_OF_BOARD;
-      } else {
-        this.y = this.y - 1;
-      }
-    }
+    const GRID_SIZE = 9;
+    const { dx, dy } = MovementDelta[this.orientation];
+
+    this.x = (this.x + dx + (GRID_SIZE + 1)) % (GRID_SIZE + 1);
+    this.y = (this.y + dy + (GRID_SIZE + 1)) % (GRID_SIZE + 1);
   }
 
   turnLeft() {
