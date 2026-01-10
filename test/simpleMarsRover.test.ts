@@ -7,6 +7,9 @@ describe("Simple Mars Rover", () => {
     { command: "LLL", expected: "0:0:E" },
     { command: "LLLL", expected: "0:0:N" },
     { command: "R", expected: "0:0:E" },
+    { command: "RR", expected: "0:0:S" },
+    { command: "RRR", expected: "0:0:W" },
+    { command: "RRRR", expected: "0:0:N" },
     { command: "M", expected: "0:1:N" },
     { command: "RM", expected: "1:0:E" },
     { command: "MM", expected: "0:2:N" }

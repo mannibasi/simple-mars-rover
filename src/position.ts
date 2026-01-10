@@ -1,4 +1,4 @@
-import { Orientation } from "./orientation";
+import { Orientation, ClockwiseOrientation, AntiClockwiseOrientation } from "./orientation";
 
 export class Position {
   constructor(
@@ -14,17 +14,9 @@ export class Position {
     }
   }
   turnLeft() {
-    if (this.orientation === Orientation.North) {
-      this.orientation = Orientation.West;
-    } else if (this.orientation === Orientation.West) {
-      this.orientation = Orientation.South;
-    } else if (this.orientation === Orientation.South) {
-      this.orientation = Orientation.East;
-    } else if (this.orientation === Orientation.East) {
-      this.orientation = Orientation.North;
-    }
+    this.orientation = AntiClockwiseOrientation[this.orientation];
   }
   turnRight() {
-    this.orientation = Orientation.East;
+    this.orientation = ClockwiseOrientation[this.orientation];
   }
 }
