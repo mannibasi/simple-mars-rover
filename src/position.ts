@@ -21,6 +21,12 @@ export class Position {
       } else {
         this.x = this.x + 1;
       }
+    } else if (this.orientation === Orientation.West) {
+      if (this.x === 0) {
+        this.x = EDGE_OF_BOARD;
+      } else {
+        this.x = this.x - 1;
+      }
     }
   }
 
