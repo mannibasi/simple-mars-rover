@@ -7,8 +7,13 @@ export class Position {
     public orientation: Orientation
   ) {}
   moveForward(): void {
+    const EDGE_OF_BOARD = 9;
     if (this.orientation === Orientation.North) {
-      this.y = this.y + 1;
+      if (this.y === EDGE_OF_BOARD) {
+        this.y = 0;
+      } else {
+        this.y = this.y + 1;
+      }
     } else if (this.orientation === Orientation.East) {
       this.x = this.x + 1;
     }
