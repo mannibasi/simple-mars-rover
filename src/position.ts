@@ -14,7 +14,15 @@ export class Position {
     }
   }
   turnLeft() {
-    this.orientation = Orientation.West;
+    if (this.orientation === Orientation.North) {
+      this.orientation = Orientation.West;
+    } else if (this.orientation === Orientation.West) {
+      this.orientation = Orientation.South;
+    } else if (this.orientation === Orientation.South) {
+      this.orientation = Orientation.East;
+    } else if (this.orientation === Orientation.East) {
+      this.orientation = Orientation.North;
+    }
   }
   turnRight() {
     this.orientation = Orientation.East;
