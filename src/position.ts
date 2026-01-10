@@ -7,7 +7,11 @@ export class Position {
     public orientation: Orientation
   ) {}
   moveForward(): void {
-    this.y = this.y + 1;
+    if (this.orientation === Orientation.North) {
+      this.y = this.y + 1;
+    } else if (this.orientation === Orientation.East) {
+      this.x = this.x + 1;
+    }
   }
   turnLeft() {
     this.orientation = Orientation.West;
